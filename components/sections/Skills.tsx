@@ -96,7 +96,7 @@ export default function Skills() {
                   </span>
                 </div>
 
-                <h3 className="mb-3 text-2xl font-semibold text-white">
+                <h3 className="mb-3 text-2xl font-semibold text-white group-hover:text-orange-500">
                   {category.title}
                 </h3>
 

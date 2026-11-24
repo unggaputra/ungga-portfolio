@@ -7,8 +7,20 @@ import { ArrowUpRight, Mail, Code2 } from "lucide-react";
 const socialLinks = [
   {
     label: "GitHub",
-    value: "github.com/ungghaputra",
-    href: "https://github.com/ungghaputra",
+    value: "github.com/unggaputra",
+    href: "https://github.com/unggaputra",
+    icon: Code2,
+  },
+  {
+    label: "Linkedin",
+    value: "linkedin.com/in/unggaputra",
+    href: "https://www.linkedin.com/in/unggaputra/",
+    icon: Code2,
+  },
+  {
+    label: "Instagram",
+    value: "instagram.com/unggaputra",
+    href: "https://www.instagram.com/unggaputra/",
     icon: Code2,
   },
 ];
@@ -87,7 +99,7 @@ export default function Contact() {
       <footer className="border-t border-white/10 bg-[#101010] px-6 py-7 text-white">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
           <p className="text-sm font-bold tracking-tight">
-            UNGGA<span className="text-orange-500">.</span>
+            UPTRANDRA<span className="text-orange-500">.</span>
           </p>
 
           <p className="text-xs text-zinc-500">

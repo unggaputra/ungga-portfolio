@@ -10,6 +10,7 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
   { label: "Certification", href: "#certifications" },
   { label: "Contact", href: "#contact" },
 ];
@@ -46,7 +47,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         <a href="#home" className="text-xl font-bold tracking-tight text-white">
-          UNGGA<span className="text-orange-500">.</span>
+          UPTRANDRA<span className="text-orange-500">.</span>
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
