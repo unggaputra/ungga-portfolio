@@ -35,30 +35,29 @@ export default function Hero() {
             Informatics Graduate & Data Science Enthusiast.
           </h2>
 
-          <p className="max-w-lg leading-8 text-zinc-400">
-            I explore data-driven solutions through machine learning,
-            data analysis, and software development. Passionate about
-            transforming ideas and data into meaningful solutions.
-          </p>
 
           <div className="flex flex-wrap gap-4 pt-3">
-            <Link
+            <a
               href="#contact"
               className="inline-flex items-center gap-3 rounded-full bg-orange-500 px-7 py-4 font-semibold text-white shadow-[0_4px_15px_rgba(249,115,22,0.20)] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-orange-400 hover:shadow-[0_8px_25px_rgba(249,115,22,0.35)] active:scale-[0.98]"
             >
               <Send size={18} />
               Hubungi Saya
-            </Link>
+            </a>
 
-            <Link
+            <a
               href="#projects"
-              className="inline-flex items-center gap-3 rounded-full border border-white/20 px-7 py-4 font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:border-orange-500 hover:text-orange-500 active:scale-[0.98]"
+              className="group inline-flex items-center gap-3 rounded-full border border-white/20 px-7 py-4 font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:border-orange-500 hover:text-orange-500 active:scale-[0.98]"
             >
               <FolderKanban size={18} />
               Lihat Portofolio
-              <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+              <ArrowRight
+                size={18}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </a>
           </div>
+
         </motion.div>
 
         {/* Right Content - Profile */}

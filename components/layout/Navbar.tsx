@@ -3,12 +3,11 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowDownToLine } from "lucide-react";
 
 const navItems = [
   { label: "Beranda", href: "#home" },
   { label: "Tentang Saya", href: "#about" },
-  { label: "Keahlian", href: "#skills" },
   { label: "Portofolio", href: "#projects" },
   { label: "Pendidikan", href: "#education" },
   { label: "Sertifikasi", href: "#certifications" },
@@ -145,6 +144,15 @@ export default function Navbar() {
             );
           })}
         </div>
+        {/* Download CV Button */}
+        <a
+          href="/cv/CV_Ungga Putra Mahendra.pdf"
+          download
+          className="group inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/50 hover:bg-orange-500/10 hover:text-orange-500"
+        >
+          <ArrowDownToLine size={16} />
+          Unduh CV
+        </a>
 
         {/* Mobile Menu Button */}
         <button

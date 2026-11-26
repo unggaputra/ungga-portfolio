@@ -2,13 +2,15 @@
 "use client";
 
 import Footer from "@/components/layout/Footer";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
+import { motion } from "motion/react";
 import {
+  ArrowUp,
   ArrowUpRight,
   Mail,
-  X,
+  MapPin,
   Send,
+  MessageCircle,
   LoaderCircle,
   CheckCircle2,
   AlertCircle,
@@ -34,20 +36,17 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 
 const socialLinks = [
   {
-    label: "GitHub",
-    value: "github.com/unggaputra",
-    href: "https://github.com/unggaputra",
-    icon: FaGithub,
-  },
-  {
     label: "LinkedIn",
-    value: "linkedin.com/in/unggaputra",
     href: "https://www.linkedin.com/in/unggaputra/",
     icon: FaLinkedin,
   },
   {
+    label: "GitHub",
+    href: "https://github.com/unggaputra",
+    icon: FaGithub,
+  },
+  {
     label: "Instagram",
-    value: "instagram.com/unggaputra",
     href: "https://www.instagram.com/unggaputra/",
     icon: FaInstagram,
   },
@@ -61,52 +60,13 @@ const initialForm = {
 };
 
 export default function Contact() {
-  const [isOpen, setIsOpen] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [isSending, setIsSending] = useState(false);
+
   const [status, setStatus] = useState<{
     type: "success" | "error";
     message: string;
   } | null>(null);
-
-  // Menutup modal dengan tombol Escape
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && !isSending) {
-        setIsOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleEscape);
-
-    return () => {
-      window.removeEventListener("keydown", handleEscape);
-    };
-  }, [isOpen, isSending]);
-
-  // Mengunci scroll halaman ketika modal terbuka
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [isOpen]);
-
-  const openModal = () => {
-    setStatus(null);
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    if (isSending) return;
-    setIsOpen(false);
-  };
 
   const handleChange = (
     event: React.ChangeEvent<
@@ -120,9 +80,7 @@ export default function Contact() {
       [name]: value,
     }));
 
-    if (status) {
-      setStatus(null);
-    }
+    if (status) setStatus(null);
   };
 
   const handleSubmit = async (
@@ -152,7 +110,8 @@ export default function Contact() {
 
       setStatus({
         type: "success",
-        message: "Pesan berhasil dikirim! Terima kasih sudah menghubungi saya.",
+        message:
+          "Pesan berhasil dikirim! Terima kasih sudah menghubungi saya.",
       });
 
       setForm(initialForm);
@@ -171,212 +130,244 @@ export default function Contact() {
 
   return (
     <>
-      {/* Contact Section */}
       <section
         id="contact"
         className="bg-[#101010] px-6 py-24 text-white md:py-32"
       >
         <div className="mx-auto max-w-7xl">
+
+          {/* Section Heading */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl border border-white/10 bg-[#151515] p-8 md:p-16"
+            className="mb-12 text-center"
           >
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
-              Hubungi Saya
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+              Kontak & Koneksi
             </p>
 
-            <h2 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight md:text-7xl">
-              Mari ciptakan sesuatu yang
-              <span className="text-orange-500"> bermakna.</span>
+            <h2 className="text-4xl font-bold tracking-tight md:text-6xl">
+              Hubungi Saya
+              <span className="text-orange-500">.</span>
             </h2>
 
-            <p className="mt-6 max-w-xl leading-relaxed text-zinc-400">
-              Saya selalu terbuka untuk berdiskusi mengenai peluang baru,
-              kolaborasi, dan proyek menarik. Jangan ragu untuk menghubungi saya!
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-400">
+              Saya terbuka untuk berbagai peluang, kolaborasi,
+              dan diskusi menarik. Silakan hubungi saya melalui
+              formulir atau informasi kontak yang tersedia.
             </p>
+          </motion.div>
 
+          {/* Contact Layout */}
+          <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[0.95fr_1.05fr]">
 
-            {/* Contact Buttons */}
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              {/* Kirim Email Button */}
-              <button
-                type="button"
-                onClick={openModal}
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-orange-500 px-5 py-3 font-semibold text-white transition-all duration-300 hover:bg-orange-600"
-              >
-                <Mail size={18} />
-                Kirim Email
-                <ArrowUpRight
-                  size={18}
-                  className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                />
-              </button>
+            {/* LEFT: CONTACT INFORMATION */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-2 space-y-5 lg:order-1"
+            >
 
-              {/* Kirim WhatsApp Button */}
+              {/* WhatsApp */}
               <a
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-green-600 px-5 py-3 font-semibold text-white transition-all duration-300 hover:bg-green-700"
+                className="group flex items-center gap-5 rounded-2xl border border-white/10 bg-[#171313] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-green-500/40 hover:shadow-[0_8px_25px_rgba(34,197,94,0.08)]"
               >
-                <FaWhatsapp size={20} />
-                Chat WhatsApp
-                <ArrowUpRight
-                  size={18}
-                  className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                />
-              </a>
-            </div>
-
-
-            {/* Social Links */}
-            <div className="mt-16 border-t border-white/10 pt-8">
-              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                Koneksi Jaringan Sosial
-              </p>
-
-              <div className="flex flex-wrap gap-6">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
-
-                  return (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      className="group inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-orange-500"
-                    >
-                      <Icon size={18} />
-                      {social.label}
-
-                      <ArrowUpRight
-                        size={14}
-                        className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
-                      />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Modal */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/75 px-4 py-8 backdrop-blur-sm"
-            onMouseDown={(event) => {
-              if (event.target === event.currentTarget) {
-                closeModal();
-              }
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.97 }}
-              transition={{ duration: 0.25 }}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="contact-modal-title"
-              className="relative my-auto w-full max-w-xl rounded-3xl border border-white/10 bg-[#151515] p-6 text-white shadow-2xl sm:p-9"
-            >
-              {/* Close Button */}
-              <button
-                type="button"
-                onClick={closeModal}
-                disabled={isSending}
-                aria-label="Close contact form"
-                className="absolute right-5 top-5 rounded-full border border-white/10 p-2 text-zinc-400 transition-colors hover:border-orange-500 hover:text-orange-500 disabled:opacity-50"
-              >
-                <X size={20} />
-              </button>
-
-              {/* Modal Heading */}
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-orange-500">
-                Let's Connect
-              </p>
-
-              <h3
-                id="contact-modal-title"
-                className="pr-10 text-3xl font-bold tracking-tight sm:text-4xl"
-              >
-                Kirim Pesan
-                <span className="text-orange-500">.</span>
-              </h3>
-
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-                Isi form di bawah ini. Pesan kamu akan langsung dikirim ke email saya.
-              </p>
-
-              {/* Contact Form */}
-              <form
-                onSubmit={handleSubmit}
-                className="mt-8 space-y-5"
-              >
-                {/* Name */}
-                <div>
-                  <label
-                    htmlFor="contact-name"
-                    className="mb-2 block text-sm font-medium text-zinc-300"
-                  >
-                    Nama
-                  </label>
-
-                  <input
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    required
-                    maxLength={100}
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Masukkan nama kamu"
-                    className="w-full rounded-xl border border-white/10 bg-[#101010] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-orange-500"
-                  />
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-green-500/15 text-green-500 transition-colors group-hover:bg-green-500/25">
+                  <FaWhatsapp size={27} />
                 </div>
 
-                {/* Email */}
-                <div>
-                  <label
-                    htmlFor="contact-email"
-                    className="mb-2 block text-sm font-medium text-zinc-300"
-                  >
-                    Email
-                  </label>
+                <div className="min-w-0 flex-1">
+                  <p className="mb-1 text-xs font-semibold text-zinc-500">
+                    WHATSAPP
+                  </p>
 
-                  <input
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    maxLength={254}
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="nama@email.com"
-                    className="w-full rounded-xl border border-white/10 bg-[#101010] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-orange-500"
+                  <p className="text-lg font-bold text-white">
+                    0822-2863-5167
+                  </p>
+                </div>
+
+                <ArrowUpRight
+                  size={20}
+                  className="shrink-0 text-zinc-500 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-green-500"
+                />
+              </a>
+
+              {/* Email */}
+              <a
+                href="mailto:unggaputra@gmail.com"
+                className="group flex items-center gap-5 rounded-2xl border border-white/10 bg-[#171313] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/40 hover:shadow-[0_8px_25px_rgba(249,115,22,0.08)]"
+              >
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-orange-500/15 text-orange-500 transition-colors group-hover:bg-orange-500/25">
+                  <Mail size={26} />
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <p className="mb-1 text-xs font-semibold text-zinc-500">
+                    EMAIL RESMI
+                  </p>
+
+                  <p className="break-all text-base font-bold text-white">
+                    unggaputra@gmail.com
+                  </p>
+                </div>
+
+                <ArrowUpRight
+                  size={20}
+                  className="shrink-0 text-zinc-500 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-orange-500"
+                />
+              </a>
+
+              {/* Location */}
+              <div className="flex items-center gap-5 rounded-2xl border border-white/10 bg-[#171313] p-6">
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-sky-500/15 text-sky-400">
+                  <MapPin size={26} />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="mb-1 text-xs font-semibold text-zinc-500">
+                    DOMISILI / LOKASI
+                  </p>
+
+                  <p className="text-base font-bold text-white">
+                    Malang, Jawa Timur, Indonesia
+                  </p>
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="rounded-2xl border border-white/10 bg-[#171313] p-6">
+                <div className="mb-5 flex items-center gap-3">
+                  <MessageCircle
+                    size={19}
+                    className="text-orange-500"
                   />
+
+                  <h3 className="font-bold text-white">
+                    Koneksi Jaringan Sosial
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {socialLinks.map((social) => {
+                    const Icon = social.icon;
+
+                    return (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-medium text-zinc-400 transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/50 hover:bg-orange-500/10 hover:text-orange-500"
+                      >
+                        <Icon size={16} />
+                        {social.label}
+
+                        <ArrowUpRight
+                          size={13}
+                          className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                        />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* RIGHT: EMAIL FORM */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-1 rounded-3xl border border-white/10 bg-[#171313] p-6 shadow-xl md:p-9 lg:order-2"
+            >
+              <div className="mb-8">
+                <div className="mb-4 flex items-center gap-3">
+                  <Mail
+                    size={22}
+                    className="text-orange-500"
+                  />
+
+                  <h3 className="text-2xl font-bold">
+                    Kirim Pesan
+                  </h3>
+                </div>
+
+                <p className="text-sm leading-relaxed text-zinc-400">
+                  Isi formulir di bawah ini untuk mengirimkan
+                  pesan secara langsung ke email saya.
+                </p>
+              </div>
+
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-5"
+              >
+
+                {/* Name and Email */}
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="contact-name"
+                      className="mb-2 block text-sm font-semibold text-zinc-300"
+                    >
+                      Nama Lengkap
+                      <span className="text-orange-500"> *</span>
+                    </label>
+
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      required
+                      maxLength={100}
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Contoh: Budi Santoso"
+                      className="w-full rounded-xl border border-white/10 bg-[#100e0e] px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-zinc-600 focus:border-orange-500 focus:ring-1 focus:ring-orange-500/30"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-email"
+                      className="mb-2 block text-sm font-semibold text-zinc-300"
+                    >
+                      Alamat Email
+                      <span className="text-orange-500"> *</span>
+                    </label>
+
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      maxLength={254}
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="nama@email.com"
+                      className="w-full rounded-xl border border-white/10 bg-[#100e0e] px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-zinc-600 focus:border-orange-500 focus:ring-1 focus:ring-orange-500/30"
+                    />
+                  </div>
                 </div>
 
                 {/* Subject */}
                 <div>
                   <label
                     htmlFor="contact-subject"
-                    className="mb-2 block text-sm font-medium text-zinc-300"
+                    className="mb-2 block text-sm font-semibold text-zinc-300"
                   >
-                    Subject
+                    Subjek / Topik
+                    <span className="text-orange-500"> *</span>
                   </label>
 
                   <input
@@ -387,8 +378,8 @@ export default function Contact() {
                     maxLength={200}
                     value={form.subject}
                     onChange={handleChange}
-                    placeholder="Topik pesan"
-                    className="w-full rounded-xl border border-white/10 bg-[#101010] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-orange-500"
+                    placeholder="Contoh: Diskusi Proyek Web Enterprise"
+                    className="w-full rounded-xl border border-white/10 bg-[#100e0e] px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-zinc-600 focus:border-orange-500 focus:ring-1 focus:ring-orange-500/30"
                   />
                 </div>
 
@@ -396,9 +387,10 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="contact-message"
-                    className="mb-2 block text-sm font-medium text-zinc-300"
+                    className="mb-2 block text-sm font-semibold text-zinc-300"
                   >
-                    Pesan
+                    Pesan Anda
+                    <span className="text-orange-500"> *</span>
                   </label>
 
                   <textarea
@@ -406,15 +398,15 @@ export default function Contact() {
                     name="message"
                     required
                     maxLength={5000}
-                    rows={5}
+                    rows={6}
                     value={form.message}
                     onChange={handleChange}
-                    placeholder="Tuliskan pesan kamu..."
-                    className="w-full resize-y rounded-xl border border-white/10 bg-[#101010] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-orange-500"
+                    placeholder="Ceritakan gambaran kebutuhan sistem, pertanyaan, atau ide proyek Anda di sini..."
+                    className="w-full resize-y rounded-xl border border-white/10 bg-[#100e0e] px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-zinc-600 focus:border-orange-500 focus:ring-1 focus:ring-orange-500/30"
                   />
                 </div>
 
-                {/* Status Message */}
+                {/* Status */}
                 {status && (
                   <div
                     role="status"
@@ -424,9 +416,15 @@ export default function Contact() {
                       }`}
                   >
                     {status.type === "success" ? (
-                      <CheckCircle2 size={18} className="mt-0.5 shrink-0" />
+                      <CheckCircle2
+                        size={18}
+                        className="mt-0.5 shrink-0"
+                      />
                     ) : (
-                      <AlertCircle size={18} className="mt-0.5 shrink-0" />
+                      <AlertCircle
+                        size={18}
+                        className="mt-0.5 shrink-0"
+                      />
                     )}
 
                     <p>{status.message}</p>
@@ -437,30 +435,44 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSending}
-                  className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-orange-500 px-6 py-4 font-semibold text-white transition-colors hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-orange-500 px-6 py-4 font-semibold text-white shadow-[0_4px_18px_rgba(249,115,22,0.18)] transition-all duration-300 hover:-translate-y-1 hover:bg-orange-400 hover:shadow-[0_8px_25px_rgba(249,115,22,0.3)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {isSending ? (
                     <>
-                      <LoaderCircle size={18} className="animate-spin" />
+                      <LoaderCircle
+                        size={18}
+                        className="animate-spin"
+                      />
                       Mengirim Pesan...
                     </>
                   ) : (
                     <>
                       <Send size={18} />
                       Kirim Pesan
-                      <ArrowUpRight size={18} />
+                      <ArrowUpRight
+                        size={18}
+                        className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                      />
                     </>
                   )}
                 </button>
               </form>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Footer */}
+          </div>
+        </div>
+      </section>
+      {/* Back to Top Button */}
+      <motion.a
+        href="#home"
+        title="Kembali ke atas"
+        aria-label="Kembali ke atas"
+        whileHover={{ y: -5, scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
+        className="fixed bottom-7 right-7 z-[999] flex size-12 items-center justify-center rounded-full border border-orange-400/30 bg-orange-500 text-white shadow-[0_4px_20px_rgba(249,115,22,0.3)] transition-colors duration-300 hover:bg-orange-400"
+      >
+        <ArrowUp size={22} />
+      </motion.a>
       <Footer />
-
     </>
   );
 }
