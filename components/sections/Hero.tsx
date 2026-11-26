@@ -4,7 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, FolderKanban, Send } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -27,7 +27,7 @@ export default function Hero() {
 
           <h1 className="text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
             Ungga Putra Mahendra
-        
+
             <span className="text-orange-500">.</span>
           </h1>
 
@@ -43,18 +43,20 @@ export default function Hero() {
 
           <div className="flex flex-wrap gap-4 pt-3">
             <Link
-              href="#projects"
-              className="inline-flex items-center gap-3 rounded-full bg-orange-500 px-7 py-4 font-semibold text-black transition hover:bg-orange-400"
+              href="#contact"
+              className="inline-flex items-center gap-3 rounded-full bg-orange-500 px-7 py-4 font-semibold text-white shadow-[0_4px_15px_rgba(249,115,22,0.20)] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-orange-400 hover:shadow-[0_8px_25px_rgba(249,115,22,0.35)] active:scale-[0.98]"
             >
-              View Projects
-              <ArrowUpRight size={18} />
+              <Send size={18} />
+              Hubungi Saya
             </Link>
 
             <Link
-              href="#contact"
-              className="inline-flex items-center gap-3 rounded-full border border-white/20 px-7 py-4 font-semibold text-white transition hover:border-orange-500 hover:text-orange-500"
+              href="#projects"
+              className="inline-flex items-center gap-3 rounded-full border border-white/20 px-7 py-4 font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:border-orange-500 hover:text-orange-500 active:scale-[0.98]"
             >
-              Contact Me
+              <FolderKanban size={18} />
+              Lihat Portofolio
+              <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
         </motion.div>

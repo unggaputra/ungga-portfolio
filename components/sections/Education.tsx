@@ -70,7 +70,7 @@ export default function Education() {
           </div>
 
           {/* Degree and GPA */}
-          <div className="mt-6 flex flex-wrap items-center gap-2">
+          <div className="mt-4 flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-2 text-sm font-semibold text-white">
               <Award size={17} />
               <span>S1 – Informatika (S.Kom)</span>
@@ -82,7 +82,7 @@ export default function Education() {
           </div>
 
           {/* Education Description */}
-          <p className="mt-5 text-sm leading-6 text-zinc-500 md:text-base md:leading-7">
+          <p className="mt-3 text-sm leading-6 text-zinc-500 md:text-base md:leading-7">
             Menempuh pendidikan Informatika dengan peminatan utama
              di Data Science dan machine learning, didukung kemampuan
              lintas bidang IT seperti pengembangan aplikasi dan web,
@@ -91,9 +91,9 @@ export default function Education() {
           </p>
 
           {/* Official Website */}
-          <div className="mt-6 border-t border-zinc-200 pt-5">
+          <div className="mt-6 border-t border-zinc-200 pt-3">
             <a
-              href="https://www.umm.ac.id/"
+              href="https://informatika.umm.ac.id/"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 text-sm font-semibold text-orange-500 transition-colors hover:text-orange-400"

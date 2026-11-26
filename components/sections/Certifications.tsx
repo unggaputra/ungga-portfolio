@@ -132,7 +132,7 @@ export default function Certifications() {
                 <div className="flex flex-1 flex-col p-5">
 
                   {/* Certificate Title */}
-                  <h3 className="min-h-[3.5rem] text-base font-bold leading-snug text-white transition-colors duration-300 group-hover:text-orange-500 md:text-lg">
+                  <h3 className="min-h-[2rem] text-base font-bold leading-snug text-white transition-colors duration-300 group-hover:text-orange-500 md:text-lg">
                     {certification.title}
                   </h3>
                   
@@ -157,15 +157,15 @@ export default function Certifications() {
                   )}
 
                   {/* Category Badge */}
-                  <div className="mt-4 min-h-[2rem]">
+                  <div className="mt-4 min-h-[2rem] pb-2">
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-orange-400">
-                      <ShieldCheck size={12} />
+                      <ShieldCheck size={15} />
                       {certification.category}
                     </span>
                   </div>
 
                   {/* Certificate Link */}
-                  <div className="mt-auto border-t border-white/10 pt-4">
+                  <div className="mt-auto border-t border-white/10 pt-3">
                     {certificateLink ? (
                       <a
                         href={certificateLink}
