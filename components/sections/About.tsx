@@ -3,82 +3,106 @@
 
 import { motion } from "motion/react";
 import {
-  ArrowDownToLine,
   GraduationCap,
   BrainCircuit,
-  Code2,
+  Award,
+  BriefcaseBusiness,
+  Code,
   ChartNoAxesCombined,
   Wrench,
   CheckCircle2,
-  Database,
-  Code,
-  Layers,
-  GitBranch,
 } from "lucide-react";
 
 const highlights = [
   {
     icon: GraduationCap,
-    title: "Education",
-    description: "Informatics Graduate",
+    title: "Pendidikan",
+    description: "Lulusan Informatika · IPK 3,83",
   },
   {
-    icon: BrainCircuit,
-    title: "Focus Area",
-    description: "Data Science & Machine Learning",
+    icon: Award,
+    title: "Sertifikasi",
+    description: "Data Scientist Bersertifikat BNSP",
   },
   {
-    icon: Code2,
-    title: "Interest",
-    description: "Software Development & Data Analytics",
+    icon: BriefcaseBusiness,
+    title: "Pengalaman",
+    description: "Data Science & Dukungan Bisnis",
   },
 ];
 
 const skillCategories = [
   {
-    title: "Programming",
+    title: "Pemrograman & Data",
     icon: Code,
-    skills: ["Python", "PHP", "JavaScript", "TypeScript"],
+    skills: ["Python", "SQL", "R", "C++"],
   },
   {
     title: "Data Science & Machine Learning",
     icon: BrainCircuit,
     skills: [
-      "Pandas",
-      "NumPy",
-      "Scikit-learn",
-      "PyTorch",
-      "TensorFlow",
+      "Data Preprocessing",
+      "EDA",
+      "Analisis Statistik",
+      "Machine Learning",
+      "Evaluasi Model",
       "NLP",
     ],
   },
   {
-    title: "Data & Analytics",
+    title: "Analitik Data & BI",
     icon: ChartNoAxesCombined,
-    skills: ["Tableau", "Looker Studio", "Power BI", "Git", "GitHub"],
+    skills: [
+      "Looker Studio",
+      "Visualisasi Data",
+      "Data Blending",
+      "Dashboard KPI",
+      "Pelaporan Data",
+    ],
   },
   {
-    title: "Development & Tools",
+    title: "Pengembangan & Tools",
     icon: Wrench,
-    skills: ["Next.js", "React", "Laravel", "OpenCV", "ESP32"],
+    skills: [
+      "LangChain",
+      "ChromaDB",
+      "Gemini API",
+      "Streamlit",
+      "OpenCV",
+      "MediaPipe",
+      "Roboflow",
+      "ESP32",
+      "Blynk",
+      "InfluxDB",
+    ],
   },
 ];
 
 const projectExperiences = [
   {
-    title: "Generative AI Sentiment Analysis",
+    title: "Analisis Sentimen Generative AI",
     description:
-      "Mengembangkan model klasifikasi sentimen terhadap Generative AI dalam bidang pendidikan menggunakan IndoBERTweet. Meliputi preprocessing data, augmentasi teks, pelatihan model, dan evaluasi performa.",
+      "Menganalisis lebih dari 4.000 data media sosial berbahasa Indonesia mengenai Generative AI dalam bidang pendidikan menggunakan IndoBERTweet. Membandingkan empat teknik augmentasi teks dengan akurasi terbaik sebesar 86% melalui Back Translation.",
   },
   {
-    title: "SIBI Sign Language Recognition",
+    title: "Asisten AI untuk Dokumen Putusan Mahkamah Agung",
     description:
-      "Mengembangkan sistem pengenalan bahasa isyarat SIBI menggunakan Python, OpenCV, dan MediaPipe, dengan dataset yang diproses melalui Roboflow.",
+      "Membangun sistem Retrieval-Augmented Generation (RAG) menggunakan LangChain, ChromaDB, dan Gemini API untuk menjawab pertanyaan berdasarkan dokumen putusan Mahkamah Agung, dilengkapi antarmuka percakapan menggunakan Streamlit.",
   },
   {
-    title: "Smart IoT Monitoring System",
+    title: "Dashboard Business Intelligence",
     description:
-      "Mengembangkan sistem monitoring suhu dan kelembapan berbasis ESP32 dan sensor DHT22, dengan integrasi Blynk dan InfluxDB untuk pemantauan data secara berkala.",
+      "Mengintegrasikan dataset klien, proyek, dan tim menggunakan metode data blending di Looker Studio. Mengembangkan dashboard interaktif untuk memantau beban kerja tim, tren pendapatan klien, dan penyelesaian proyek.",
+  },
+  {
+    title: "Pengenalan Bahasa Isyarat SIBI",
+    description:
+      "Mengembangkan prototipe pengenalan gestur tangan menggunakan Python, OpenCV, dan MediaPipe. Mengeksplorasi dataset Roboflow yang terdiri dari sekitar 3.430 gambar dengan 49 kelas gestur.",
+  },
+  {
+    title: "Sistem Monitoring Kandang Ayam Berbasis IoT",
+    description:
+      "Membangun sistem pemantauan dan pengendalian suhu berbasis ESP32 menggunakan sensor DHT22 dan relay. Mengintegrasikan Blynk untuk pemantauan jarak jauh serta InfluxDB Cloud untuk penyimpanan data historis.",
   },
 ];
 
@@ -98,11 +122,11 @@ export default function About() {
           className="mb-16"
         >
           <p className="mb-4 text-sm font-medium tracking-[0.25em] text-orange-500">
-            GET TO KNOW ME
+            TENTANG SAYA
           </p>
 
           <h2 className="text-4xl font-bold text-white md:text-6xl">
-            About <span className="text-orange-500">Me.</span>
+            Mengenal Lebih <span className="text-orange-500">Dekat.</span>
           </h2>
         </motion.div>
 
@@ -117,29 +141,35 @@ export default function About() {
             className="space-y-7"
           >
             <h3 className="text-2xl font-semibold leading-relaxed text-white md:text-3xl">
-              Exploring technology,
+              Tertarik pada data,
               <span className="text-orange-500">
-                {" "}understanding data,
+                {" "}menyukai teknologi,
               </span>{" "}
-              and building meaningful solutions.
+              dan senang membangun solusi yang bermanfaat.
             </h3>
 
             <p className="leading-8 text-zinc-400">
-              I am an Informatics graduate from Universitas Muhammadiyah
-              Malang with an academic focus on Data Science and Machine
-              Learning.
+              Saya merupakan lulusan S1 Informatika dari
+              Universitas Muhammadiyah Malang dengan IPK 3,83
+              dan sertifikasi Data Scientist dari BNSP.
             </p>
 
             <p className="leading-8 text-zinc-400">
-              My interests include data processing, machine learning,
-              data analytics, and software development. Through academic
-              and personal projects, I have explored different technologies
-              to transform data and ideas into practical solutions.
+              Saya mulai mengeksplorasi bidang pengolahan
+              data sejak semester 5 melalui komunitas dan
+              berbagai proyek. Sejak itu, saya mempelajari
+              pengolahan data, analisis statistik, machine
+              learning, dan visualisasi data melalui proyek
+              NLP, web scraping, serta Business Intelligence.
             </p>
 
             <p className="leading-8 text-zinc-400">
-              I enjoy learning new technologies, solving problems, and
-              continuously developing my technical and analytical skills.
+              Selain mengerjakan proyek teknis, saya juga
+              memiliki pengalaman dalam komunikasi pelanggan,
+              pengelolaan data administrasi, dan pelaporan
+              penjualan. Saya senang mempelajari teknologi
+              baru, menyelesaikan masalah, dan mengembangkan
+              ide menjadi solusi yang dapat diterapkan.
             </p>
           </motion.div>
 
@@ -190,17 +220,21 @@ export default function About() {
             className="mb-10"
           >
             <p className="mb-4 text-sm font-medium tracking-[0.25em] text-orange-500">
-              TECHNICAL EXPERTISE
+              KEMAMPUAN PROFESIONAL
             </p>
 
             <h3 className="text-3xl font-bold text-white md:text-4xl">
-              Specialization &{" "}
-              <span className="text-orange-500">Experience.</span>
+              Keahlian &{" "}
+              <span className="text-orange-500">
+                Pengalaman.
+              </span>
             </h3>
 
             <p className="mt-5 max-w-2xl leading-8 text-zinc-400">
-              Technologies, tools, and technical capabilities that I have
-              explored and applied through academic and personal projects.
+              Berbagai teknologi, perangkat, dan kemampuan
+              teknis yang telah saya pelajari serta terapkan
+              melalui proyek akademik, mandiri, dan pengalaman
+              praktis.
             </p>
           </motion.div>
 
@@ -215,8 +249,9 @@ export default function About() {
             >
               <div className="mb-8 flex items-center gap-3">
                 <span className="h-6 w-2 rounded-full bg-orange-500" />
+
                 <h3 className="text-xl font-bold text-white">
-                  Specialization & Tech Stack
+                  Keahlian & Teknologi
                 </h3>
               </div>
 
@@ -270,8 +305,9 @@ export default function About() {
             >
               <div className="mb-8 flex items-center gap-3">
                 <span className="h-6 w-2 rounded-full bg-emerald-400" />
+
                 <h3 className="text-xl font-bold text-white">
-                  Project Experience
+                  Pengalaman Proyek
                 </h3>
               </div>
 
