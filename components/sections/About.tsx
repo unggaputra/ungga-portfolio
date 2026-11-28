@@ -38,6 +38,18 @@ const skillCategories = [
     skills: ["Python", "SQL", "R", "C++"],
   },
   {
+    title: "Pengembangan Web",
+    icon: Code,
+    skills: [
+      "Laravel",
+      "PHP",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
+  },
+  {
     title: "Data Science & Machine Learning",
     icon: BrainCircuit,
     skills: [
